@@ -1,10 +1,14 @@
 import { ListItem } from "@/components/listItem";
+import { UserButton } from "@clerk/nextjs";
 
 export default function Home() {
   return (
     <main className="flex flex-col items-center">
       <div className="flex flex-col max-w-2xl p-4">
-        <h2 className="text-5xl text-center">🌸</h2>
+        <div className="flex justify-between">
+          <h2 className="text-5xl text-center">🌸</h2>
+          <UserButton />
+        </div>
         <div className="pt-7 flex flex-col w-full">
           <label
             className="text-xl font-extrabold text-green-800 p-1"
