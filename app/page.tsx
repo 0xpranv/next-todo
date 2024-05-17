@@ -1,10 +1,14 @@
-import { ListItem } from "@/components/listItem";
+import { AllPosts } from "@/components/allPosts";
+import { PostForm } from "@/components/postForm";
+import { SubmitButton } from "@/components/submitButton";
 import { UserButton } from "@clerk/nextjs";
+import { currentUser } from "@clerk/nextjs/server";
 
-export default function Home() {
+export default async function Home() {
+  const user = await currentUser();
   return (
     <main className="flex flex-col items-center">
-      <div className="flex flex-col max-w-2xl p-4">
+      <div className="flex flex-col p-4">
         <div className="flex justify-between">
           <h2 className="text-5xl text-center">🌸</h2>
           <UserButton />
@@ -16,22 +20,11 @@ export default function Home() {
           >
             Enter a new Todo
           </label>
-          <input
-            className="border rounded-t-md p-2"
-            type="text"
-            placeholder="Make dinner"
-          />
-          <button className="p-2 bg-green-700 rounded-b-md text-white">
-            Add +
-          </button>
+          <PostForm />
         </div>
-        <div className="pt-5">
-          <ol>
-            <ListItem />
-            <ListItem />
-            <ListItem />
-          </ol>
-        </div>
+      </div>
+      <div className="pt-5">
+        <AllPosts />
       </div>
     </main>
   );
